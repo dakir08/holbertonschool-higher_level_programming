@@ -1,6 +1,4 @@
 #!/usr/bin/python3
 def print_matrix_integer(matrix=[[]]):
     for row in matrix:
-        for val in row:
-            print("{:2}".format(val), end="")
-        print("")
+        print(' '.join(str(x) for x in row))
