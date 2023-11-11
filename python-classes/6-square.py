@@ -70,8 +70,8 @@ class Square:
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
-    def contains_only_integers(tuple):
-        return all(isinstance(value, int) for value in tuple)
+    def contains_only_integers(self, tup):
+        return all(isinstance(value, int) for value in tup)
 
-    def only_positive_integers(tuple):
-        return all(num >= 0 for num in tuple)
+    def only_positive_integers(self, tup):
+        return all(num >= 0 for num in tup)
