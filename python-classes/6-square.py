@@ -10,6 +10,11 @@ class Square:
         elif size < 0:
             raise ValueError("size mustbe >= 0")
         self.__size = size
+        if (not isinstance(position, tuple) or
+                len(position) != 2 or
+                not self.contains_only_integers(position) or
+                not self.only_positive_integers(position)):
+            raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = position
 
     """Return squared area"""
@@ -67,6 +72,6 @@ class Square:
 
     def contains_only_integers(tuple):
         return all(isinstance(value, int) for value in tuple)
-    
+
     def only_positive_integers(tuple):
         return all(num >= 0 for num in tuple)
