@@ -1,4 +1,4 @@
 #!/usr/bin/python3
-a= 89
-b =a
-print(a is b)
+l1 = [1, 2, 3]
+l2 = [1, 2, 3] 
+print(l1 is l2)
