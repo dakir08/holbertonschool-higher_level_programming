@@ -1,0 +1,10 @@
+The ``BaseGeometry`` class
+====================
+
+Using ``BaseGeometry`` class
+-------------------
+
+First import MyList from 1-my__list
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Tests:
