@@ -35,3 +35,29 @@ Checking given test case
 
 >>> print(my_list)
 [1, 4, 2, 3, 5]
+
+Checking negative values
+>>> my_list_2 = MyList()
+
+>>> my_list_2.append(-1)
+
+>>> my_list_2.append(0)
+
+>>> my_list_2.append(1)
+
+>>> my_list_2.append(-5)
+
+>>> print(my_list_2)
+[-1, 0, 1, -5]
+
+>>> my_list_2.print_sorted()
+[-5, -1, 0, 1]
+
+Checking empty object
+>>> my_list_3 = MyList()
+
+>>> print(my_list_3)
+[]
+
+>>> my_list_3.print_sorted()
+[]
