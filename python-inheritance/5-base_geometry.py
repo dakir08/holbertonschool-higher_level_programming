@@ -5,7 +5,7 @@ BaseGeometry module.
 
 
 class BaseGeometry:
-    ''' 
+    """
     Class BaseGeometry
-    '''
+    """
     pass
