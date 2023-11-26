@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """
 12. Pascal Triangle
@@ -16,7 +15,6 @@ def pascal_triangle(n):
 
     if n == 1:
         return triangles
-    
     while len(triangles) < n:
             last_row = triangles[-1]
             new_row = [1]
