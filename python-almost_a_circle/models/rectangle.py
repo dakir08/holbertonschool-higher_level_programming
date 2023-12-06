@@ -108,6 +108,10 @@ class Rectangle(Base):
         if self.width == 0 or self.height == 0:
             print("")
             return
+        
+        # Print the top margin (y-axis offset)
+        for _ in range(self.y):
+            print("")
 
         # Print the rectangle
         for h in range(self.height):
