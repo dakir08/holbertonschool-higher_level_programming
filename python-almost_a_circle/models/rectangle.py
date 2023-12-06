@@ -129,7 +129,8 @@ class Rectangle(Base):
         # Update using positional arguments
         if args:
             for i, arg in enumerate(args):
-                if i < len(attributes):  # Ensure the index is within the attributes
+                # Ensure the index is within the attributes
+                if i < len(attributes):
                     if arg is None and i == 0:
                         # Reset to initial values if 'id' is None
                         self.__init__(self.width, self.height, self.x, self.y)
