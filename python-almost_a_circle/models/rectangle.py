@@ -120,6 +120,32 @@ class Rectangle(Base):
             # Print the rectangle row
             print("#" * self.width)
 
+    def update(self, *args, **kwargs):
+        """
+        Update the properties of the Rectangle instance.
+        """
+        attributes = ['id', 'width', 'height', 'x', 'y']
+
+        # Update using positional arguments
+        if args:
+            for i, arg in enumerate(args):
+                if i < len(attributes):  # Ensure the index is within the attributes
+                    if arg is None and i == 0:
+                        # Reset to initial values if 'id' is None
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        setattr(self, attributes[i], arg)
+
+        # Update using keyword arguments
+        elif kwargs:
+            for key, value in kwargs.items():
+                if key in attributes:
+                    if key == 'id' and value is None:
+                        # Reset to initial values if 'id' is None
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        setattr(self, key, value)
+
     def __str__(self):
         """
         Return to this format: [Rectangle] (<id>) <x>/<y> - <width>/<height>
