@@ -99,3 +99,20 @@ class Rectangle(Base):
         return the area of the rectangle.
         """
         return self.width * self.height
+
+    def display(self):
+        """
+        Prints in stdout the Rectangle instance with the character '#'.
+        """
+        # Check if the rectangle has no area
+        if self.width == 0 or self.height == 0:
+            print("")
+            return
+
+        # Print the rectangle
+        for h in range(self.height):
+            # Print the left margin (x-axis offset)
+            print(" " * self.x, end="")
+
+            # Print the rectangle row
+            print("#" * self.width)
