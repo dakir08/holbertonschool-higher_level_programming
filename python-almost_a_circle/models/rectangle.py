@@ -68,12 +68,12 @@ class Rectangle(Base):
     def y(self):
         """
         Get y coordinator of the rectangle.
-        """        
+        """
         return self.__y
 
     @y.setter
     def y(self, value):
         """
         Set y coordinator of the rectangle.
-        """  
+        """
         self.__y = value
