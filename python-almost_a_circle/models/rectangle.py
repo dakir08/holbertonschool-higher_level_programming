@@ -80,14 +80,14 @@ class Rectangle(Base):
     def y(self):
         """
         Get y coordinator of the rectangle.
-        """        
+        """
         return self.__y
 
     @y.setter
     def y(self, value):
         """
         Set y coordinator of the rectangle.
-        """  
+        """
         if type(value) is not int:
             raise TypeError("y must be an integer")
         if value < 0:
