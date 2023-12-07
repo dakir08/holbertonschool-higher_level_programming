@@ -35,10 +35,10 @@ class Square(Rectangle):
 
     def __str__(self):
         """
-        Return to this format: [Rectangle] (<id>) <x>/<y> - <width>/<height>
+        Return to this format: [Square] (<id>) <x>/<y> - <size
         """
         message = (
-            f"[Rectangle] ({self.id}) {self.x}/{self.y}"
+            f"[Square] ({self.id}) {self.x}/{self.y}"
             f" - {self.width}"
         )
         return message
