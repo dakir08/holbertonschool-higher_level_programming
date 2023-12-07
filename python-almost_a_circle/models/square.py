@@ -33,6 +33,33 @@ class Square(Rectangle):
         self.width = value
         self.height = value
 
+    def update(self, *args, **kwargs):
+        """
+        Update the properties of the Square instance.
+        """
+        # Define attribute names in order
+        attributes = ['id', 'size', 'x', 'y']
+
+        # Update using positional arguments
+        if args:
+            for index, arg in enumerate(args):
+                if index < len(attributes):  # Check if index is valid
+                    if arg is None and index == 0:
+                        # Reset to initial values if 'id' is None
+                        self.__init__(self.size, self.x, self.y)
+                    else:
+                        setattr(self, attributes[index], arg)
+
+        # Update using keyword arguments
+        elif kwargs:
+            for key, value in kwargs.items():
+                if key in attributes:
+                    if key == 'id' and value is None:
+                        # Reset to initial values if 'id' is None
+                        self.__init__(self.size, self.x, self.y)
+                    else:
+                        setattr(self, key, value)
+
     def __str__(self):
         """
         Return to this format: [Square] (<id>) <x>/<y> - <size
