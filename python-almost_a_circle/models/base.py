@@ -45,8 +45,5 @@ class Base:
                 # Write an empty JSON array to the file
                 jsonfile.write("[]")
             else:
-                # Convert each object in the list to its dictionary representation
                 list_dicts = [obj.to_dictionary() for obj in list_objs]
-
-                # Serialize the list of dictionaries to a JSON string and write to the file
                 jsonfile.write(Base.to_json_string(list_dicts))
