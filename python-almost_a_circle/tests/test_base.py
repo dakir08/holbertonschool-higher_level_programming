@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import json
+import os
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
@@ -143,6 +144,73 @@ class TestJsonStringConversion(unittest.TestCase):
     def test_raises_type_error_with_multiple_arguments(self):
         with self.assertRaises(TypeError):
             Base.to_json_string([], 1)
+
+class TestBaseSaveToFile(unittest.TestCase):
+    def test_save_one_rectangle_to_file(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        Rectangle.save_to_file([r])
+        with open("Rectangle.json", "r") as file:
+            contents = file.read()
+            self.assertEqual(len(contents), 52)
+
+    def test_save_two_rectangles_to_file(self):
+        r1 = Rectangle(3, 5, 7, 9, 2)
+        r2 = Rectangle(3, 6, 2, 3, 5)
+        Rectangle.save_to_file([r1, r2])
+        with open("Rectangle.json", "r") as file:
+            contents = file.read()
+            self.assertEqual(len(contents), 104)
+
+    def test_save_one_square_to_file(self):
+        s = Square(5, 2, 3, 4)
+        Square.save_to_file([s])
+        with open("Square.json", "r") as file:
+            contents = file.read()
+            self.assertEqual(len(contents), 38)
+
+    def test_save_two_squares_to_file(self):
+        s1 = Square(4, 4, 4, 4)
+        s2 = Square(6, 6, 6, 6)
+        Square.save_to_file([s1, s2])
+        with open("Square.json", "r") as file:
+            contents = file.read()
+            self.assertEqual(len(contents), 76)
+
+    def test_save_to_file_using_base_class(self):
+        s = Square(5, 5, 5, 5)
+        Base.save_to_file([s])
+        with open("Base.json", "r") as file:
+            contents = file.read()
+            self.assertEqual(len(contents), 38)
+
+    def test_save_to_file_overwrites_existing_file(self):
+        s = Square(6, 6 ,6 ,6)
+        Square.save_to_file([s])
+        s = Square(5, 5, 5, 5)
+        Square.save_to_file([s])
+        with open("Square.json", "r") as file:
+            contents = file.read()
+            self.assertEqual(len(contents), 38)
+
+    def test_save_to_file_with_None_creates_empty_file(self):
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            contents = file.read()
+            self.assertEqual(contents, "[]")
+
+    def test_save_empty_list_to_file_creates_empty_file(self):
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            contents = file.read()
+            self.assertEqual(contents, "[]")
+
+    def test_save_to_file_raises_error_without_arguments(self):
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file()
+
+    def test_save_to_file_raises_error_with_multiple_arguments(self):
+        with self.assertRaises(TypeError):
+            Square.save_to_file([], 1)
 
 
 if __name__ == "__main__":
