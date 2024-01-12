@@ -131,11 +131,11 @@ class TestJsonStringConversion(unittest.TestCase):
         expected_length = len(json.dumps([s1.to_dictionary(), s2.to_dictionary()]))
         self.assertEqual(len(json_string), expected_length)
 
-    def test_empty_list_returns_empty_json_array(self):
-        self.assertEqual("[]", Base.to_json_string([]))
-
     def test_none_argument_returns_empty_json_array(self):
         self.assertEqual("[]", Base.to_json_string(None))
+
+    def test_empty_list_returns_empty_json_array(self):
+        self.assertEqual("[]", Base.to_json_string([]))
 
     def test_raises_type_error_without_arguments(self):
         with self.assertRaises(TypeError):
