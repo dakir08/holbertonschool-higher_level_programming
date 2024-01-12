@@ -1,3 +1,5 @@
+import io
+import sys
 import unittest
 from models.rectangle import Rectangle
 
@@ -69,9 +71,29 @@ class TestRectangle(unittest.TestCase):
         r = Rectangle(1, 2, 3, 4, 5)
         self.assertEqual(str(r), "[Rectangle] (5) 3/4 - 1/2")
 
-    # Assuming display() prints a string representation of the rectangle
-    # Here you would need to capture stdout to test the display method
-    # For simplicity, this test is omitted
+    def test_display_without_x_y(self):
+        capturedOutput = io.StringIO()
+        sys.stdout = capturedOutput
+        r = Rectangle(3, 4)
+        r.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(capturedOutput.getvalue(), "###\n###\n###\n###\n")
+
+    def test_display_without_y(self):
+        capturedOutput = io.StringIO()
+        sys.stdout = capturedOutput
+        r = Rectangle(3, 4, 2)
+        r.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(capturedOutput.getvalue(), "  ###\n  ###\n  ###\n  ###\n")
+
+    def test_display(self):
+        capturedOutput = io.StringIO()
+        sys.stdout = capturedOutput
+        r = Rectangle(1, 2, 2, 3)
+        r.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(capturedOutput.getvalue(), "\n\n\n  #\n  #\n")
 
     def test_to_dictionary(self):
         r = Rectangle(1, 2, 3, 4, 5)
