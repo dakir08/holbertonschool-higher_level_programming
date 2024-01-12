@@ -273,6 +273,59 @@ class TestBaseCreate(unittest.TestCase):
 #     def test_load_from_file_raises_error_with_multiple_arguments(self):
 #         with self.assertRaises(TypeError):
 #             Base.load_from_file([], 1)
+        
+class TestBaseFromJsonString(unittest.TestCase):
+    def test_from_json_string_returns_list_type(self):
+        list_input = [{"id": 89, "width": 10, "height": 4}]
+        json_string = Rectangle.to_json_string(list_input)
+        result = Rectangle.from_json_string(json_string)
+        self.assertIsInstance(result, list)
+
+    def test_from_json_string_correctly_converts_single_rectangle(self):
+        list_input = [{"id": 89, "width": 10, "height": 4, "x": 7}]
+        json_string = Rectangle.to_json_string(list_input)
+        result = Rectangle.from_json_string(json_string)
+        self.assertEqual(result, list_input)
+
+    def test_from_json_string_correctly_converts_multiple_rectangles(self):
+        list_input = [
+            {"id": 89, "width": 10, "height": 4, "x": 7, "y": 8},
+            {"id": 98, "width": 5, "height": 2, "x": 1, "y": 3}
+        ]
+        json_string = Rectangle.to_json_string(list_input)
+        result = Rectangle.from_json_string(json_string)
+        self.assertEqual(result, list_input)
+
+    def test_from_json_string_correctly_converts_single_square(self):
+        list_input = [{"id": 89, "size": 10, "height": 4}]
+        json_string = Square.to_json_string(list_input)
+        result = Square.from_json_string(json_string)
+        self.assertEqual(result, list_input)
+
+    def test_from_json_string_correctly_converts_multiple_squares(self):
+        list_input = [
+            {"id": 89, "size": 10, "height": 4},
+            {"id": 7, "size": 1, "height": 7}
+        ]
+        json_string = Square.to_json_string(list_input)
+        result = Square.from_json_string(json_string)
+        self.assertEqual(result, list_input)
+
+    def test_from_json_string_with_None_returns_empty_list(self):
+        self.assertEqual([], Base.from_json_string(None))
+
+    def test_from_json_string_with_empty_string_returns_empty_list(self):
+        self.assertEqual([], Base.from_json_string("[]"))
+
+    def test_from_json_string_raises_error_without_arguments(self):
+        with self.assertRaises(TypeError):
+            Base.from_json_string()
+
+    def test_from_json_string_raises_error_with_multiple_arguments(self):
+        with self.assertRaises(TypeError):
+            Base.from_json_string([], 1)
+
+
 
 if __name__ == "__main__":
     unittest.main()
