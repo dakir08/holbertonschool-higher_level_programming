@@ -12,6 +12,7 @@ import urllib.request
 if __name__ == "__main__":
     url = sys.argv[1]
     body = {"email": sys.argv[2]}
+    data = urllib.parse.urlencode(body).encode("ascii")
 
     request = urllib.request.Request(url, data=body, method="POST")
     with urllib.request.urlopen(request) as response:
