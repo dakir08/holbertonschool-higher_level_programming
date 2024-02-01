@@ -8,8 +8,6 @@ it use the package urllib
 if __name__ == "__main__":
     import urllib.request
 
-    req = urllib.request.Request(url='http://intranet.hbtn.io/status', headers={'User-Agent': 'Mozilla/5.0'})
-
     with urllib.request.urlopen("https://intranet.hbtn.io/status") as res:
         content = res.read()
         print("Body response:")
