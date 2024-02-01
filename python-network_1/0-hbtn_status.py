@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     req = urllib.request.Request(url='http://intranet.hbtn.io/status', headers={'User-Agent': 'Mozilla/5.0'})
 
-    with urllib.request.urlopen(req) as res:
+    with urllib.request.urlopen("https://intranet.hbtn.io/status") as res:
         content = res.read()
         print("Body response:")
         print(f"\t- type: {type(content)}")
