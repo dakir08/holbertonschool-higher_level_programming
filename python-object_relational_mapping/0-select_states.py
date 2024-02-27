@@ -8,7 +8,8 @@ import sys
 
 
 if __name__ == "__main__":
-    db_connection = MySQLdb.connect(host="localhost", user=sys.argv[1],
+    db_connection = MySQLdb.connect(host="localhost",
+                                    user=sys.argv[1],
                                     passwd=sys.argv[2], db=sys.argv[3], port=3306)
     cur = db_connection.cursor()
     cur.execute("SELECT * FROM states")
