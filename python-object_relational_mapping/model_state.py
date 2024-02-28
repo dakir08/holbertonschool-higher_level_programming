@@ -2,14 +2,13 @@
 """
 contains the class definition of a State
 """
-from sqlalchemy import Column, Integer, String, MetaData
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
-mymetadata = MetaData()
-DeclarativeBase = declarative_base()
+Base = declarative_base()
 
 
-class State(DeclarativeBase):
+class State(Base):
     """
     State class
     """
