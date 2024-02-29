@@ -15,8 +15,6 @@ if __name__ == "__main__":
         sys.argv[3]))
     Session = sessionmaker(bind=engine)
     session = Session()
-    new_state = State(name="Louisiana")
-    session.add(new_state)
     query = session.query(State).filter_by(id=2).first()
     query.name = "New Mexico"
     session.commit()
